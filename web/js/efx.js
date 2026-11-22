@@ -1,10 +1,10 @@
 /*
- * EFX-LE Editor — data model and SysEx protocol for the Musicom Lab EFX-LE.
+ * EFX-LE Editor — data model and SysEx protocol for the EFX-LE loop switcher.
  * Copyright (C) 2026 Jon Solberg — GPL-3.0-or-later (see LICENSE).
  *
  * The EFX-LE keeps its user data as 512 blocks of 128 seven-bit bytes. A dump is 512 SysEx
  * messages of 138 bytes: F0 00 21 06 00 06 7F <block hi> <block lo> <128 data bytes> F7.
- * The format was worked out from Musicom Lab's EFX-LE Editor V1.41.
+ * The format was worked out from the official EFX-LE Editor V1.41.
  *
  * Everything here works on a Uint8Array(65536) "image" (block * 128 + offset), so bytes the
  * editor doesn't know about are always kept as they are.

@@ -119,7 +119,7 @@
 
   function buildPanel() {
     var p = h('div', { class: 'efxpanel' });
-    p.appendChild(h('div', { class: 'efxbrand' }, h('span', { class: 'efxname' }, 'EFX·LE'), h('span', { class: 'efxsub' }, 'AUDIO CONTROLLER'), h('span', { class: 'efxmk' }, 'Musicom LAB')));
+    p.appendChild(h('div', { class: 'efxbrand' }, h('span', { class: 'efxname' }, 'EFX·LE'), h('span', { class: 'efxsub' }, 'AUDIO CONTROLLER')));
     p.appendChild(h('div', { class: 'efxlcd', id: 'dLcd' }));
     // top row: MODE, MUTE/▼, ▲
     var top = h('div', { class: 'efxtop' });

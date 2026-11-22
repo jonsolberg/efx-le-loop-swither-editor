@@ -272,7 +272,7 @@
     }
     m.appendChild(h('div', { class: 'start' },
       h('div', { class: 'hero' }, h('h2', null, 'EFX-LE Editor'),
-        h('p', null, 'Edit the presets, routing, songs, sets and global settings of your Musicom Lab EFX-LE, or play it live in Direct mode.')),
+        h('p', null, 'Edit the presets, routing, songs, sets and global settings of your EFX-LE, or play it live in Direct mode.')),
       step(1, midiOk, 'Connect the pedal', [
         h('p', null, 'Use a USB MIDI interface: its MIDI OUT to the EFX-LE’s MIDI IN, and the EFX-LE’s MIDI OUT/THRU to the interface’s MIDI IN.'),
         !M.supported() ? h('p', { class: 'warn' }, 'This browser has no Web MIDI. Use Chrome or Edge on a computer to talk to the pedal.') :
@@ -685,7 +685,7 @@
   function pageHelp(m) {
     m.appendChild(h('div', { class: 'about' },
       h('h2', null, 'EFX-LE Editor ' + VERSION),
-      h('p', null, 'A free editor for the Musicom Lab EFX-LE audio controller. It talks to the pedal over MIDI (SysEx) through a USB MIDI interface.'),
+      h('p', null, 'A free editor for the EFX-LE audio controller. It talks to the pedal over MIDI (SysEx) through a USB MIDI interface.'),
       h('h3', null, 'Loading and saving'),
       h('dl', { class: 'helpdl' },
         h('dt', null, 'Load from pedal'), h('dd', null, 'The editor asks the EFX-LE for its data and receives 512 blocks (70,656 bytes). The pedal’s MIDI OUT/THRU must be set to OUT.'),
@@ -693,18 +693,18 @@
         h('dt', null, 'Save to pedal'), h('dd', null, 'Sends the data back, a block every 60 ms (about 30 s for everything). If the pedal doesn’t take it, open UTILITY › MIDI SYSEX DATA on the pedal and choose LOAD first. Keep a .syx backup.'),
         h('dt', null, '.syx files'), h('dd', null, 'The same format as the official EFX-LE editor and the pedal’s dump, so files work both ways.')),
       h('h3', null, 'Interfaces'),
-      h('p', null, 'Musicom Lab has tested the Roland UM-ONE and the M-Audio Uno with the EFX-LE. Some cheap interfaces drop long SysEx messages; if loading stops part-way, try another interface.'),
+      h('p', null, 'The Roland UM-ONE and the M-Audio Uno are known to work with the EFX-LE. Some cheap interfaces drop long SysEx messages; if loading stops part-way, try another interface.'),
       h('h3', null, 'Keyboard'),
       h('p', null, 'Ctrl+Z / Ctrl+Y: undo / redo. In Direct mode: 1–5 select presets, ← → change bank, M changes the switch page.'),
       h('h3', null, 'Links'),
       h('p', null, h('a', { href: 'https://github.com/jonsolberg/efx-le-loop-swither-editor', target: '_blank', rel: 'noopener' }, 'Source code and issues on GitHub'), ' · ',
         h('a', { href: 'https://jonsolberg.se:8080/music.html', target: '_blank', rel: 'noopener' }, 'More music apps on jonsolberg.se'), ' · ',
-        h('a', { href: 'http://musicomlab.com/efx-le.htm', target: '_blank', rel: 'noopener' }, 'EFX-LE at Musicom Lab')),
+        h('a', { href: 'http://musicomlab.com/efx-le.htm', target: '_blank', rel: 'noopener' }, 'The EFX-LE manual and firmware')),
       h('h3', null, 'Support'),
       h('p', null, 'The editor is free, open source and has no ads. If you find it useful, you can support me on Ko-fi.'),
       h('a', { class: 'kofi', href: 'https://ko-fi.com/jonsolberg', target: '_blank', rel: 'noopener' }, '❤ Support me'),
       h('h3', null, 'Licence'),
-      h('p', { class: 'note' }, 'Copyright © 2026 Jon Solberg. Free software under the GNU General Public License v3 or later. Not affiliated with Musicom Lab; EFX-LE is their trademark.')
+      h('p', { class: 'note' }, 'Copyright © 2026 Jon Solberg. Free software under the GNU General Public License v3 or later. An independent project, not affiliated with the maker of the EFX-LE.')
     ));
   }
 
