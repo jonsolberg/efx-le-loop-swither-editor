@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+  EFX-LE Editor — Copyright (C) 2026 Jon Solberg
+  Free software under the GNU General Public License v3 or later.
+  https://github.com/jonsolberg/efx-le-loop-swither-editor
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Editor for the Musicom Lab EFX-LE loop switcher over MIDI: presets, routing, songs, sets, global settings and a live Direct mode.">
+<meta name="theme-color" content="#14171c">
+<title>EFX-LE Editor</title>
+<link rel="icon" href="icon.svg?v=1.0" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css?v=1.0">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="icon.svg?v=1.0" width="24" height="24" alt="" class="appicon">
+    <span class="only-wide">EFX-LE <b>Editor</b></span></div>
+  <button id="pick" class="mempick only-narrow" aria-label="Choose preset"></button>
+  <button id="status" class="status" title="Connection and data"></button>
+  <div class="actions">
+    <button id="btnLoad" class="primary" title="Read all data from the pedal"><span class="ic">⤓</span><span class="lb">Load from pedal</span></button>
+    <button id="btnSave" class="save" title="Write your changes to the pedal"><span class="ic">⤒</span><span class="lb">Save to pedal</span></button>
+    <button id="btnUndo" class="iconbtn" title="Undo (Ctrl+Z)">↶</button>
+    <button id="btnRedo" class="iconbtn" title="Redo (Ctrl+Y)">↷</button>
+    <button id="btnMore" class="iconbtn" title="File and settings" aria-label="File and settings">⋯</button>
+  </div>
+</header>
+<div id="midibar" class="midibar"></div>
+<div id="banner"></div>
+<nav class="tabs">
+  <button data-page="start"><span class="ti">⌂</span><span>Start</span></button>
+  <button data-page="direct"><span class="ti">◉</span><span>Direct</span></button>
+  <button data-page="presets"><span class="ti">☰</span><span>Presets</span></button>
+  <button data-page="songs"><span class="ti">♫</span><span>Songs</span></button>
+  <button data-page="sets"><span class="ti">▤</span><span>Sets</span></button>
+  <button data-page="global"><span class="ti">⚙</span><span>Global</span></button>
+  <button data-page="help" class="only-wide"><span class="ti">?</span><span>Help</span></button>
+</nav>
+<div class="layout">
+  <aside class="side">
+    <div class="sidehead only-narrow"><b id="sidetitle">Choose</b><button id="btnCloseList" class="iconbtn" aria-label="Close">✕</button></div>
+    <input id="filter" type="search" placeholder="Find…" aria-label="Find">
+    <ul id="list"></ul>
+  </aside>
+  <main id="main"></main>
+</div>
+<input id="fileinput" type="file" accept=".syx,.SYX,application/octet-stream" hidden>
+<div id="toasts"></div>
+<script src="js/efx.js?v=1.0"></script>
+<script src="js/midi.js?v=1.0"></script>
+<script src="js/direct.js?v=1.0"></script>
+<script src="js/app.js?v=1.0"></script>
+</body>
+</html>
