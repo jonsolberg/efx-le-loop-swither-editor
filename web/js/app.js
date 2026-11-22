@@ -293,7 +293,8 @@
         h('button', { onclick: function () { go('songs'); } }, '♫ Songs'),
         h('button', { onclick: function () { go('sets'); } }, '▤ Sets'),
         h('button', { onclick: function () { go('global'); } }, '⚙ Global MIDI and utility'),
-        h('button', { onclick: function () { go('direct'); } }, '◉ Direct mode'))),
+        h('button', { onclick: function () { go('direct'); } }, '◉ Direct mode'),
+        h('button', { onclick: function () { go('help'); } }, '? Help'))),
       step(4, S.source === 'pedal' && !changedBlocks().length && S.undo.length > 0, 'Save', [
         h('p', null, 'Write your changes to the pedal, and keep a .syx file as a backup.'),
         h('div', { class: 'btnrow' }, h('button', { class: 'primary', onclick: saveToPedal }, '⤒ Save to pedal'),
@@ -795,14 +796,21 @@
       { t: 'Open .syx file…', f: openFile },
       { t: 'Save .syx file', f: saveFile },
       { t: 'Wait for dump from pedal', f: function () { loadFromPedal(true); } },
-      { t: 'Start from factory data…', f: newData },
-      null,
-      { t: 'Theme: ' + themeName(), f: cycleTheme },
-      { t: 'Help', f: function () { go('help'); } }
+      { t: 'Start from factory data…', f: newData }
     ]);
   }
   function themeName() { var t = localStorage.getItem(KEY_THEME); return t === 'dark' ? 'dark' : t === 'light' ? 'light' : 'automatic'; }
-  function applyTheme() { var t = localStorage.getItem(KEY_THEME); if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme; }
+  var SVG_OPEN = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+  var THEME_ICON = {
+    automatic: SVG_OPEN + '<circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>',
+    dark: SVG_OPEN + '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>',
+    light: SVG_OPEN + '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+  };
+  function applyTheme() {
+    var t = localStorage.getItem(KEY_THEME); if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
+    var b = $('btnTheme'), n = themeName();
+    if (b) { b.innerHTML = THEME_ICON[n]; b.title = 'Theme: ' + n + ' (click to change)'; b.setAttribute('aria-label', b.title); }
+  }
   function cycleTheme() {
     var t = themeName(), n = t === 'automatic' ? 'dark' : t === 'dark' ? 'light' : null;
     try { if (n) localStorage.setItem(KEY_THEME, n); else localStorage.removeItem(KEY_THEME); } catch (e) { /* ignore */ }
@@ -824,6 +832,7 @@
     $('btnUndo').addEventListener('click', undo);
     $('btnRedo').addEventListener('click', redo);
     $('btnMore').addEventListener('click', moreMenu);
+    $('btnTheme').addEventListener('click', cycleTheme);
     $('status').addEventListener('click', statusPop);
     $('pick').addEventListener('click', function () { document.body.classList.add('show-list'); });
     $('btnCloseList').addEventListener('click', function () { document.body.classList.remove('show-list'); });

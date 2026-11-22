@@ -409,3 +409,5 @@ table.mtab input[type=number] { padding-left: 6px; padding-right: 4px; }
 .gcols { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 4px 28px; align-items: start; }
 table.gtab { max-width: 520px; }
 table.gtab tbody th { min-width: 92px; }
+button.themebtn { display: inline-flex; align-items: center; justify-content: center; }
+button.themebtn svg { display: block; }
